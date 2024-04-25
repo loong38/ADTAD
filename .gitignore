@@ -136,3 +136,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# test dir
+/apache-tomcat-9.0.87/
+/mysql-8.3.0-winx64/
+/jdk-21.0.3/
+/.idea
