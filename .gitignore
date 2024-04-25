@@ -141,3 +141,4 @@ cython_debug/
 /mysql-8.3.0-winx64/
 /jdk-21.0.3/
 /apache-tomcat-9.0.87/
+/.idea
