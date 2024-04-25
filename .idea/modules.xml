@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AutoInstallDatabaseAndTomcatInWindows.iml" filepath="$PROJECT_DIR$/.idea/AutoInstallDatabaseAndTomcatInWindows.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ADTAD.iml" filepath="$PROJECT_DIR$/.idea/ADTAD.iml" />
     </modules>
   </component>
 </project>
