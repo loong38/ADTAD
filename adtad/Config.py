@@ -61,6 +61,7 @@ path="./jdk"
 '''
             with open(self.__config_path, 'w') as configfile:
                 configfile.write(initialize_data)
+                configfile.close()
 
     def __init__(self):
         self.__config_path = "config/config.ini"
