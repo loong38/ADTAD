@@ -41,23 +41,34 @@ class Java:
 class Config:
     __initialize_data = '''
 [mysql]
-mysql_path="./mysql"
-username="root"
+path="./mysql"
+account="root"
 password="root"
 database="mysql"
 #sql_file=""
 
 [tomcat]
-tomcatDir="./apache"
+path="./apache"
 
 [java]
-install_path="./jdk"
+path="./jdk"
 '''
 
+    def create_config_file(self):
+        config_path = self.__config_path
+        if not os.path.isdir(os.path.dirname(config_path)):
+            os.mkdir(os.path.dirname(config_path))
+
+        if not os.path.isfile(config_path):
+            with open(self.__config_path, 'w') as configfile:
+                configfile.write(Config.__initialize_data)
+
     def __init__(self):
-        self.__config_path = "./config/config.ini"
+        self.__config_path = "config/config.ini"
         self.__config = configparser.ConfigParser()
 
+        self.create_config_file()
+        print(os.path.abspath(self.__config_path))
         if not os.path.exists(self.__config_path):
             self.create_config_file()
         Config.initialize_data = None
@@ -66,7 +77,7 @@ install_path="./jdk"
         config.read(self.__config_path)
 
         self.__mysql = ConfigMysql(config['mysql']['path'],
-                                   config['mysql']['user'],
+                                   config['mysql']['account'],
                                    config['mysql']['password'],
                                    config['mysql']['database'])
         # self.__sql_file = config['mysql']['sql_file']
@@ -74,11 +85,6 @@ install_path="./jdk"
         self.__java = Java(config['java']['path'])
 
         self.__tomcat = Tomcat(config['tomcat']['path'])
-        pass
-
-    def create_config_file(self):
-        with open(self.__config_path, 'w') as configfile:
-            configfile.write(Config.__initialize_data)
         pass
 
     def get_mysql(self):

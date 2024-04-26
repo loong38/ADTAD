@@ -2,19 +2,17 @@
 import os.path
 import sys
 
+
 from adtad.Config import Config
 from adtad.argument_manage.Argumnet import Argument
 
 
 class Main(object):
     def __init__(self):
-        os.chdir("../")
         self.config = Config()
         self.setting_environment_variables()
 
     def setting_environment_variables(self):
-        # 切换根目录未上一级
-        os.chdir("../")
         # 添加mysql环境变量
         MYSQL_HOME: str = self.config.get_mysql().get_mysql_path()
         os.environ["MYSQL_HOME"] = MYSQL_HOME
@@ -34,6 +32,8 @@ class Main(object):
 
 # 按装订区域中的绿色按钮以运行脚本。
 if __name__ == '__main__':
+    # 切换根目录未上一级
+    # os.chdir("../")
     Main()
-    Argument(sys.argv[1:])
+    # Argument(sys.argv[1:])
     pass
