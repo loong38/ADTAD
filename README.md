@@ -1,7 +1,7 @@
 # ADTAD
 
 #### 介绍
-自动部署tomcat和数据库的windows应用程序。
+自动部署tomcat和数据库的windows应用程序。 
 Automatically deploy tomcat and database
 
 #### 软件架构

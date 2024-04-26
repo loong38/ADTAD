@@ -1,6 +1,7 @@
 import getopt
 
-from adtad.argument_manage.Initialize import Initialize
+from adtad.argument_manage.InitializeMysql import InitializeMysql
+from adtad.handler.MysqlHandler import MysqlHandler
 
 
 class Argument(object):
@@ -9,8 +10,10 @@ class Argument(object):
         self.short_opts = 'h'
         self.long_opts = ['help', 'initialize', 'uninstall', "start", "console", "stop", "noImportData"]
 
+        # TODO ERROR IndexError: list index out of range
         if "initialize" in argv[0]:
-            Initialize(argv[1:])
+            initial = InitializeMysql(argv[1:])
+            mysqlHandler = MysqlHandler(initial)
             return
         opts, args = getopt.getopt(argv[1:], self.short_opts, self.long_opts)
         # if opts

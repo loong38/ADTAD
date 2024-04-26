@@ -35,5 +35,5 @@ if __name__ == '__main__':
     # 切换根目录未上一级
     # os.chdir("../")
     Main()
-    # Argument(sys.argv[1:])
+    Argument(sys.argv[1:])
     pass

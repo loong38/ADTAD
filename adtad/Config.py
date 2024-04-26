@@ -3,23 +3,21 @@ import os.path
 
 
 class ConfigMysql:
+
     def __init__(self, mysql_path: str, mysql_user: str, mysql_password: str, mysql_db: str):
-        self.__mysql_db = mysql_db
-        self.__mysql_password = mysql_password
-        self.__mysql_user = mysql_user
-        self.__mysql_path = mysql_path
+        self.__config = {"path": mysql_path, "account": mysql_user, "password": mysql_password, "mysql_db": mysql_db}
 
     def get_mysql_path(self):
-        return self.__mysql_path
+        return self.__config["path"]
 
     def get_mysql_user(self):
-        return self.__mysql_user
+        return self.__config["account"]
 
     def get_mysql_password(self):
-        return self.__mysql_password
+        return self.__config["password"]
 
     def get_mysql_db(self):
-        return self.__mysql_db
+        return self.__config["mysql_db"]
 
 
 class Tomcat:
@@ -39,7 +37,15 @@ class Java:
 
 
 class Config:
-    __initialize_data = '''
+
+    def create_config_file(self):
+        config_path = self.__config_path
+        if not os.path.isdir(os.path.dirname(config_path)):
+            os.mkdir(os.path.dirname(config_path))
+
+        if not os.path.isfile(config_path):
+            initialize_data = \
+                '''
 [mysql]
 path="./mysql"
 account="root"
@@ -53,25 +59,14 @@ path="./apache"
 [java]
 path="./jdk"
 '''
-
-    def create_config_file(self):
-        config_path = self.__config_path
-        if not os.path.isdir(os.path.dirname(config_path)):
-            os.mkdir(os.path.dirname(config_path))
-
-        if not os.path.isfile(config_path):
             with open(self.__config_path, 'w') as configfile:
-                configfile.write(Config.__initialize_data)
+                configfile.write(initialize_data)
 
     def __init__(self):
         self.__config_path = "config/config.ini"
         self.__config = configparser.ConfigParser()
 
         self.create_config_file()
-        print(os.path.abspath(self.__config_path))
-        if not os.path.exists(self.__config_path):
-            self.create_config_file()
-        Config.initialize_data = None
 
         config = configparser.ConfigParser()
         config.read(self.__config_path)
