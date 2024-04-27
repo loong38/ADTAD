@@ -11,10 +11,12 @@ def show_help():
     print('')
 
 
-class InitializeMysql(object):
+class InitializeMysqlArgumnet(object):
     def __init__(self, argv: list):
         self.short_opts: str = "h"
         self.long_opts: list = ['help', 'noData', 'noDefaultAccount']
+        self.noData:bool = False
+        self.noDefaultAccount:bool = False
         print(argv)
         try:
             opts, args = getopt.getopt(argv, self.short_opts, self.long_opts)
@@ -33,3 +35,9 @@ class InitializeMysql(object):
                 self.noDefaultAccount: bool = True
             else:
                 print(f"opt {opt} not recognized")
+
+    def get_no_data(self):
+        return self.noData
+
+    def get_no_default_account(self):
+        return self.noDefaultAccount

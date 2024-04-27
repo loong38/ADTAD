@@ -36,12 +36,12 @@ class Main(object):
 if __name__ == '__main__':
     # 切换根目录未上一级
     # os.chdir("../")
-    # Main()
-    # Argument(sys.argv[1:])
+    Main()
+    Argument(sys.argv[1:])
     # c = CommandRuntime()
     # c.execute(['mysqld',"--initialize-insecure"])
     pass
 
-    runtime = CommandRuntime("dira")
-    runtime.execute()
+    # runtime = CommandRuntime("dira")
+    # runtime.execute()
     # print(runtime.execute().stderr)
