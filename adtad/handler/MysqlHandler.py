@@ -3,4 +3,5 @@ class MysqlHandler(object):
         self.initial = initial
 
     def initialize(self):
+
         pass
