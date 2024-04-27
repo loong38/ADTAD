@@ -1,9 +1,7 @@
 # 这是一个示例 Python 脚本。
 import os.path
-import subprocess
 import sys
 
-from adtad.CommandRuntime import CommandRuntime
 from adtad.Config import Config
 from adtad.argument_manage.Argumnet import Argument
 

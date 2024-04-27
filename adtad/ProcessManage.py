@@ -17,11 +17,10 @@ class ProcessManage(object):
         else:
             return False
 
-    def stop_process_by_port(self, port):
+    def stop_process_by_port(self):
         if self.is_process_use_port():
             self.process.terminate()
             return True
-
         return False
 
         #

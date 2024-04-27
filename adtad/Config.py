@@ -35,7 +35,7 @@ path=jdk
                 configfile.close()
 
     def __init__(self):
-        self.__config_path = "config/config.ini"
+        self.__config_path = "config.ini"
         self.__config = configparser.ConfigParser()
 
         self.create_config_file()

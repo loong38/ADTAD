@@ -10,8 +10,8 @@ class Argument(object):
     def __init__(self, argv):
         # 定义命令行参数
         self.short_opts = 'h'
-        self.long_opts = ['help', 'initialize', 'uninstall', "start", "console", "stop"]
-        
+        self.long_opts = ['help', 'uninstall', "start", "stop", "console"]
+
         if not argv:
             self.show_help()
             sys.exit(0)
@@ -29,6 +29,12 @@ class Argument(object):
             if opt in ("-h", "--help"):
                 self.show_help()
                 sys.exit(0)
+            elif opt in "--start":
+                # TODO main start
+                pass
+            elif opt in "--stop":
+                # TODO main stop
+                pass
             elif opt in "--console":
                 runtime = CommandRuntime(["cmd", "/c", "start", "cmd", "/k"])
                 runtime.execute()
@@ -41,8 +47,9 @@ class Argument(object):
     def show_help(self):
         print('')
         print('Options:')
+        print('  initialize        initialize mysql service')
+        print('')
         print('  -h | --help       Display this help message and exit')
-        print('  --initialize      initialize mysql service and import data')
         print('  --uninstall       remove mysql service')
         print('  --start           start mysql service and tomcat service')
         print('  --stop            stop mysql service and tomcat service')
