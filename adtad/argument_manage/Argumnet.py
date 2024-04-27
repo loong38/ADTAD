@@ -11,8 +11,7 @@ class Argument(object):
         # 定义命令行参数
         self.short_opts = 'h'
         self.long_opts = ['help', 'initialize', 'uninstall', "start", "console", "stop"]
-        # --console
-        # TODO ERROR IndexError: list index out of range
+        
         if not argv:
             self.show_help()
             sys.exit(0)
