@@ -2,7 +2,8 @@ import getopt
 import sys
 
 from adtad.CommandRuntime import CommandRuntime
-from adtad.argument_manage.InitializeMysqlArgumnet import InitializeMysqlArgumnet
+from adtad.argument_manage.InitializeMysqlArgument import InitializeMysqlArgument
+from adtad.argument_manage.InitializeTomcatArgument import InitializeTomcatArgument
 from adtad.handler.MysqlHandler import MysqlHandler
 
 
@@ -17,7 +18,7 @@ class Argument(object):
             sys.exit(0)
 
         if "initialize" in argv[0]:
-            initializeMysqlArgv = InitializeMysqlArgumnet(argv[1:])
+            initializeMysqlArgv = InitializeMysqlArgument(argv[1:])
             mysqlHandler = MysqlHandler(initializeMysqlArgv)
             mysqlHandler.initialize()
             mysqlHandler.run()
@@ -30,9 +31,18 @@ class Argument(object):
                 self.show_help()
                 sys.exit(0)
             elif opt in "--start":
+                initializeMysqlArgv = InitializeMysqlArgument(argv[1:])
+                mysqlHandler = MysqlHandler(initializeMysqlArgv)
+                mysqlHandler.start()
+                mysqlHandler.run()
+                initializeTomcatArgv = InitializeTomcatArgument(argv[1:])
                 # TODO main start
                 pass
             elif opt in "--stop":
+                initializeMysqlArgv = InitializeMysqlArgument(argv[1:])
+                mysqlHandler = MysqlHandler(initializeMysqlArgv)
+                mysqlHandler.stop()
+                mysqlHandler.run()
                 # TODO main stop
                 pass
             elif opt in "--console":

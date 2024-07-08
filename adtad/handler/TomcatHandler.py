@@ -2,35 +2,28 @@ from adtad.CommandRuntime import CommandRuntime
 from adtad.argument_manage.InitializeMysqlArgument import InitializeMysqlArgument
 
 
-class MysqlHandler(object):
+class TomcatHandler(object):
     def __init__(self, initial: InitializeMysqlArgument):
         self.command = []
         self.initial: InitializeMysqlArgument = initial
 
     def initialize(self):
-        # TODO initial
-        self.command = ["mysqld", "--initialize-insecure"]
-        if self.initial.get_no_data():
-            # self.command.append("--no-data")
-            pass
-        if self.initial.get_no_default_account():
-            pass
         pass
+    # TODO initial
+    # self.command = ["mysqld", "--initialize-insecure"]
+    # if self.initial.get_no_data():
+    #     # self.command.append("--no-data")
+    #     pass
+    # if self.initial.get_no_default_account():
+    #     pass
+    # pass
 
     def start(self):
-        self.command = ["net", "start", "mysql"]
+        self.command = [config.get_tomcat(), "start", "mysql"]
         pass
 
     def stop(self):
         self.command = ["net", "stop", "mysql"]
-        pass
-
-    def remove_service(self):
-        self.command = ["mysqld", "-remove"]
-        pass
-
-    def add_service(self):
-        self.command = ["mysqld", "-install"]
         pass
 
     def run(self):

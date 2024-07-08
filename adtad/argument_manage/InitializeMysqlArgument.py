@@ -11,7 +11,7 @@ def show_help():
     print('')
 
 
-class InitializeMysqlArgumnet(object):
+class InitializeMysqlArgument(object):
     def __init__(self, argv: list):
         self.short_opts: str = "h"
         self.long_opts: list = ['help', 'noData', 'noDefaultAccount']
